@@ -1,0 +1,12 @@
+.raceScheduleDiv{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 550;
+    font-size: 30px;
+}
+
+.textColor{
+    color: white;
+}

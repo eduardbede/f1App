@@ -1,0 +1,71 @@
+.divTeam{
+    min-height: calc(100vh - 241px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    padding-top: 150px;
+}
+
+
+.logoConstructor{
+    width: 350px;
+}
+
+.dataDivTeam{
+    display: grid;
+    grid-template-areas: 
+       'conImg conImg'
+       'conName resName'
+       'conOwner resOwner'
+       'conBase resBase'
+       'conChassis resChassis'
+       'conChamp resChamp'
+       'conEngine resEngine';
+    gap: 20px;
+    border: 1px solid rgb(199, 194, 194);
+    padding: 10px;
+    border-radius: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 550;
+    font-size: 15px;
+}
+
+.dataDivTeam > :first-child{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+.dataDivTeamDark{
+    background-color: #a5a4a4;
+    border: 1px solid #A2EAB6;
+}
+
+.conImg{grid-area: conImg;}
+.conName{grid-area: conName;}
+.resName{grid-area: resName;}
+.conOwner{grid-area: conOwner;}
+.resOwner{grid-area: resOwner;}
+.conBase{grid-area: conBase;}
+.resBase{ grid-area: resBase;}
+.conChassis{grid-area: conChassis;}
+.resChassis{grid-area: resChassis;}
+.conChamp{grid-area: conChamp;}
+.resChamp{grid-area: resChamp;}
+.conEngine{grid-area: conEngine;}
+.resEngine{grid-area: resEngine;}
+
+.divTeamDark{
+    background-color: #121212;
+}
+
+@media (max-width: 576px){
+    .logoConstructor{
+        width: 250px;
+    }
+    .divTeam{
+        padding-top: 150px;
+    }
+}
+

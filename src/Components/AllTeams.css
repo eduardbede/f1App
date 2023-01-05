@@ -1,0 +1,43 @@
+.singleDivCardsTeam{
+    justify-content: center;
+    display: flex;
+    gap: 200px;
+    flex-wrap: wrap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 550;
+    font-size: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.singleCardDivTeam{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    height: 200px;
+    width: 200px;
+}
+
+.cardTeamsImage{
+    width:100%;
+    height:60%;
+    object-fit: contain;
+}
+
+.singleCardDivTeamDark{
+    background-color: #a5a4a4;
+    border: 1px solid #A2EAB6;
+}
+
+.singleDivCardsTeamDark{
+    background-color: #121212;
+}
+
+.loadingDriversImgDark{
+    background-color: #121212;
+}

@@ -1,0 +1,30 @@
+.driverConstructorSelect{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px;
+    padding-top: 100px;
+}
+
+.constDriverSelect{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 550;
+    font-size: 30px;
+    padding-bottom: 2px;
+    cursor: pointer;
+}
+
+.selectedWho{
+    border-bottom: 1px solid red;
+    padding-bottom: 5px;
+    text-decoration-color: red;
+    color: red;
+}
+
+.selectedWhoDark{
+    color: white;
+}
+
+.driverConstructorSelectDark{
+    background-color: #121212;
+}

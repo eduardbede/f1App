@@ -1,0 +1,40 @@
+.textDivHome{
+    min-height: calc(100vh - 111px);
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 550;
+    font-size: 20px;
+    padding: 20px;
+    line-height: 100px
+}
+
+.textDivHomeDark{
+    background-color: #121212;
+    color: #A2EAB6;
+}
+
+@media (max-width: 576px){
+    .textDivHome{
+        line-height: 50px;
+        padding-top: 70px;
+    }
+}
+
+@media (max-width: 764px){
+    .textDivHome{
+        line-height: 70px
+    }
+}
+
+@media only screen and (max-height: 575.98px) and (orientation: landscape) {
+    .textDivHome{
+        min-height: calc(100vh - 111px);
+        line-height: 50px;
+        padding-top: 70px;
+    }
+}
+
+

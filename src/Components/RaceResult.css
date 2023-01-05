@@ -1,0 +1,59 @@
+.raceResultDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    padding-left:10vw;
+    padding-right:10vw;
+}
+
+.raceDriverNameDiv{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 550;
+    font-size: 15px;
+    text-decoration-line:underline
+}
+
+.constructorIdClass{
+    text-decoration-line:underline
+}
+
+.pResults{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 550;
+    font-size: 30px;
+}
+
+.pResultsDark{
+    color: white;
+    background-color: #121212;
+}
+
+.darkImgLap{
+    color: white;
+}
+
+.raceResultsLoadImg{
+    min-height: calc(100vh - 71px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.raceResultsLoadDark{
+    background-color: #121212;
+}
+
+@media (max-width: 768px){
+    .raceResultDiv{
+        padding-left:5vw;
+        padding-right:5vw;
+    }
+  
+}
+
+@media only screen and (max-height: 575.98px) and (orientation: landscape) {
+  .raceResultsLoadImg{
+    padding-top: 100px;
+  }
+}

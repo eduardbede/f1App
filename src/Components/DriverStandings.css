@@ -1,0 +1,42 @@
+.driverStandingsDiv{
+    min-height: calc(100vh - 390px);
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
+
+.driverStandingsDivDark{
+    background-color: #121212;
+}
+
+.driverStandingsDivDarkAge{
+    color: white;
+}
+
+.ageStandingDiv{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 550;
+    font-size: 30px;
+}
+
+.driverStandingsLoading{
+    height: calc(100vh - 224px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.driverStandingsLoadDark{
+    background-color: #121212;
+}
+
+
+@media (max-width: 576px){
+    .driverStandingsDiv{
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+}

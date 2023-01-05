@@ -1,0 +1,16 @@
+.newsDiv{
+    padding-top: 100px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 171px);
+}
+
+.newsDivDark{
+    background-color: #121212;
+}
+
+.r-14lw9ot {
+    background-color: #020e14 !important;
+}

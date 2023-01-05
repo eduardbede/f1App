@@ -1,0 +1,28 @@
+.constructorStandingsDiv{
+  padding-left: 20vw;
+  padding-right: 20vw;
+}
+
+.loadImgConstructors{
+  min-height: calc(100vh - 224px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.darkConstructors{
+  background-color: #121212;
+}
+
+.darkConstructorsStandings{
+        background-color: #121212;
+        color: white;
+}
+
+@media (max-width: 576px){
+    .constructorStandingsDiv{
+        padding-left: 5vw;
+        padding-right: 5vw;
+}
+  
+}

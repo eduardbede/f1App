@@ -1,0 +1,19 @@
+.loadingImg{
+    max-width: 350px;
+}
+
+.loadingWait{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loadingWait > p{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 550;
+    font-size: 30px;
+}
+
+.paragraphLoadingDark{
+    color: white;
+}

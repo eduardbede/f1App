@@ -1,0 +1,37 @@
+.tableDiv{
+    padding-top: 50px;
+    padding-bottom: 10vh;
+   /*  width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.darkTheme{
+    background-color: #121212;
+}
+
+.loadingDivRace{
+    min-height: calc(100vh - 278px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 764px){
+    .tableDiv{
+        padding-left: 20vw;
+        padding-right: 20vw;
+    }
+  
+}
+
+@media (max-width: 764px){
+    .tableDiv{
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+}
+
+
