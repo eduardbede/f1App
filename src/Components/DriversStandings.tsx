@@ -144,9 +144,10 @@ export default function Standings() {
 
     return (
       <>
-      {driverStandings.length !== 0 ?
+      <SelectYears />
+      { driverStandings !== undefined ?
         <>
-          <SelectYears />
+          
           <div className={`ageStandingDiv ${!darkTheme ? 'driverStandingsDivDark': ''}`}>
             <div className={`${!darkTheme ? 'driverStandingsDivDarkAge': ''}`}>{age} Standings</div>
           </div>

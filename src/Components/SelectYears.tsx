@@ -29,7 +29,6 @@ export default function SelectYears() {
                 setAllSeason(totalSeasons.reverse());
             })
             .catch(error => console.log('error', error));
-            console.log('call api season')
           }
       },[allSeason?.length, setAllSeason])
       

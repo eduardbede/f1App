@@ -111,9 +111,9 @@ export default function ConstructorStandings() {
 
   return (
     <>
-    {constructorStandings.length !== 0 ?
+    <SelectYears />
+    {constructorStandings !== undefined ?
       <>
-        <SelectYears />
         <div className={`ageStandingDiv ${!darkTheme ? "darkConstructorsStandings" : ''}`}>
             <div>{age} Standings</div>
         </div>
