@@ -1,6 +1,7 @@
 .constructorStandingsDiv{
   padding-left: 20vw;
   padding-right: 20vw;
+  min-height: calc(100vh - 224px);
 }
 
 .loadImgConstructors{
