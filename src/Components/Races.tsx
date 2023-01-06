@@ -5,8 +5,9 @@ import useYears from "./useYears";
 import useDarkTheme from "./useDarkTheme";
 
 export default function Races() {
-  const {darkTheme} = useDarkTheme()
-const {age} = useYears()
+  const {darkTheme} = useDarkTheme();
+  const {age} = useYears();
+  
   return (
     <>
       <SelectYears  />
