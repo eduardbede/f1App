@@ -8,16 +8,19 @@ import useAllDriversFetch from "./fetchHooks/useAllDriversFetch";
 
 
 export default function Drivers() {
-  const {darkTheme} = useDarkTheme()
+  const {darkTheme} = useDarkTheme();
   const {age} = useYears();
-  const {driversData} = useAllDriversFetch(age)
+  const {driversData} = useAllDriversFetch(age);
 
   const sortedDrivers= [...driversData].sort((a,b)=>a.firstName > b.firstName ? 1:-1);
+
+  const singleDivCardsDarkNames = !darkTheme ? 'singleDivCardsDarkNames' : '';
+  
   const driversCardMop = sortedDrivers.map((el)=>{
     return <Link to={`/drivers/${el.driverId}`} key={el.driverId} >
               <div className={`singleCardDivDriver ${!darkTheme ? 'singleCardDivDriverDark' : ''}`}>
                   <img className="cardDriversImage" src={el.image} alt='' ></img>
-                  <div className={`${!darkTheme ? 'singleDivCardsDarkNames' : ''}`}>{el.firstName} {el.lastName}</div>
+                  <div className={`${singleDivCardsDarkNames}`}>{el.firstName} {el.lastName}</div>
               </div>
            </Link>
     

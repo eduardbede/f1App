@@ -1,4 +1,4 @@
-import { useParams, Link, Params }from 'react-router-dom'
+import { useParams, Link, Params }from 'react-router-dom';
 import DataTable, {createTheme} from 'react-data-table-component';
 import LoadingImg from './LoadingImg';
 import './RaceResult.css';
@@ -7,10 +7,10 @@ import useDarkTheme from './useDarkTheme';
 import useRaceResultsFetch from './fetchHooks/useRaceResultsFetch';
 
 
-export default function RaceResults() {
+export default function RaceResults(){
 
   const params = useParams<Readonly<Params<string>>>();
-  const {darkTheme} = useDarkTheme()
+  const {darkTheme} = useDarkTheme();
   const {age} = useYears();
   const {raceName, singleRaceData} = useRaceResultsFetch(age, params);
 

@@ -1,10 +1,10 @@
-import DataTable, { ExpanderComponentProps, createTheme } from 'react-data-table-component'
-import {getCode} from 'country-list'
-import Flag from 'react-world-flags'
-import { Link } from 'react-router-dom'
-import './TableColumn.css'
-import useYears from './useYears'
-import useDarkTheme from './useDarkTheme'
+import DataTable, { ExpanderComponentProps, createTheme } from 'react-data-table-component';
+import {getCode} from 'country-list';
+import Flag from 'react-world-flags';
+import { Link } from 'react-router-dom';
+import './TableColumn.css';
+import useYears from './useYears';
+import useDarkTheme from './useDarkTheme';
 
 interface Props{ 
     dataRace:string[];
@@ -24,67 +24,67 @@ interface RaceHours{
     practiceTow: DateTimeRace;
     practiceSprint: {name:string, practice:DateTimeRace};
     qualifying: DateTimeRace;
-    race:DateTimeRace
+    race:DateTimeRace;
 }
 
 interface DateTimeRace{
-    date:string
-    time:string
+    date:string;
+    time:string;
 }
 
 export default function TableColumn({dataRace}: Props) {
-    const {darkTheme} = useDarkTheme()
-    const {age} = useYears()
+    const {darkTheme} = useDarkTheme();
+    const {age} = useYears();
 
     function getNameCountry(el:string){
         if(el === "Russia"){
-            return "ru"
+            return "ru";
         }else if(el === 'UAE'){
-            return 'sa'
+            return 'sa';
         }else if(el==="USA"){
-            return 'us'
+            return 'us';
         }else if(el==="UK"){
-            return 'gb'
+            return 'gb';
         }else if(el==="Turkey"){
-            return 'tr'
+            return 'tr';
         }else if(el==="Korea"){
-            return 'kr'
+            return 'kr';
         }else if(el==='United States'){
-            return 'us'
+            return 'us';
         }else{
-            return getCode(el)
+            return getCode(el);
         }
     }
 
 
     function formatDay(day:string | undefined){
         if(day === undefined) return
-        let d = new Date(day)
+        let d = new Date(day);
         let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
-        return da
+        return da;
     }
 
     function formatMonth(month:string | undefined):string | undefined{
-        if(month === undefined) return
-        let d = new Date(month)
+        if(month === undefined) return;
+        let d = new Date(month);
         let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
-        return mo
+        return mo;
     }
     
     function formatDayMonth(dayMonth:string){
-        if(dayMonth === undefined) return
+        if(dayMonth === undefined) return;
         const time =  new Date(dayMonth).toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric' });
-        return time
+        return time;
             
     }
 
     function formatTime(time:string){
-        if(time === undefined) return
-        let timp = new Date(time).toLocaleTimeString()
+        if(time === undefined) return;
+        let timp = new Date(time).toLocaleTimeString();
         if(timp === 'Invalid Date'){
-            return ''
+            return '';
         }else{
-            return timp
+            return timp;
         }
     }
 

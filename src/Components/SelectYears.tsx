@@ -11,8 +11,8 @@ import { AllYearsContext } from '../App';
 export default function SelectYears() {
   const {darkTheme} = useDarkTheme();
   const allYearsArray = useContext(AllYearsContext);
-  const allSeason = allYearsArray?.allSeason;
-  const setAllSeason:any = allYearsArray?.setAllSeason;
+  const allSeason = allYearsArray!.allSeason;
+  const setAllSeason = allYearsArray!.setAllSeason;
   const {age, setAge} = useYears();
   const handleChange = (event: SelectChangeEvent<string>) => {
     setAge?.(event.target.value as string);
@@ -56,10 +56,12 @@ export default function SelectYears() {
      
       });
       
+      const textColorDark = !darkTheme ? 'darkTheme textColorDark' : '';
+      const textColorDarkTwo =  !darkTheme ? 'textColorDark' : '';
    
       return (
-      <div className={`formSelect ${!darkTheme ? 'darkTheme textColorDark' : ''}`}>
-          <FormControl size='medium' sx={{height: 40}} className={`${!darkTheme ? 'textColorDark' : ''}`} >
+      <div className={`formSelect ${textColorDark}`}>
+          <FormControl size='medium' sx={{height: 40}} className={`${textColorDarkTwo}`} >
               <InputLabel id="demo-simple-select-label" 
                           sx={style}
                          

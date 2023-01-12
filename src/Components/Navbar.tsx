@@ -1,12 +1,12 @@
-import { useWindowSize, useOnClickOutside } from 'usehooks-ts'
-import logo from '../img/F1_logo.svg.png'
-import './Navbar.css'
-import ListDesktop from './ListDesktop'
-import ListMobile from './ListMobile'
+import { useWindowSize, useOnClickOutside } from 'usehooks-ts';
+import logo from '../img/F1_logo.svg.png';
+import './Navbar.css';
+import ListDesktop from './ListDesktop';
+import ListMobile from './ListMobile';
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useRef, useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { useRef, useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 
 export const Navbar = () => {

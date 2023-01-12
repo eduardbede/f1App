@@ -31,8 +31,8 @@ export default function Teams(){
 
   useEffect(()=>{
     fetch(`http://ergast.com/api/f1/constructors/${params.constructorId}.json`)
-    .then((response:any) => response.json())
-    .then((result:any) => {
+    .then((response) => response.json())
+    .then((result) => {
       wtf.fetch(`${result.MRData.ConstructorTable.Constructors[0]?.url}`).then((res:any)=>{
         const constructorData = res.json();
         if(constructorData.sections[0].infoboxes !== undefined && constructorData.sections[0].infoboxes[0].logo !== undefined){
@@ -41,8 +41,8 @@ export default function Teams(){
             spaceReplace = spaceReplace.replace("File:", "");
            }
            fetch(`https://en.wikipedia.org/w/api.php?action=query&prop=imageinfo&format=json&titles=File:${spaceReplace}&iiprop=url&origin=*`)
-           .then((response:any)=>response.json())
-           .then((dataRes:any)=>{
+           .then((response)=>response.json())
+           .then((dataRes)=>{
              const driverImage = dataRes.query.pages;
                setConstructorData({ 
                  constName: constructorData.sections[0]?.infoboxes[0].long_name?.text,
@@ -67,13 +67,14 @@ export default function Teams(){
         }
       })
  })
-    .catch((error:any) => console.log('error', error));
+    .catch((error:string | undefined | null) => console.log('error', error));
   },[])
-
+const divTeamDark = !darkTheme ? 'divTeamDark' : '';
+const dataDivTeamDark = !darkTheme ? 'dataDivTeamDark' : '';
     return (
-      <div className={`divTeam ${!darkTheme ? 'divTeamDark' : ''}`}>
+      <div className={`divTeam ${divTeamDark}`}>
         {constructorData.image === '' ? <LoadingImg /> :
-        <div className={`dataDivTeam ${!darkTheme ? 'dataDivTeamDark' : ''}`}>
+        <div className={`dataDivTeam ${dataDivTeamDark}`}>
           <div className='conImg'><img src={constructorData.image} alt='' className='logoConstructor'></img></div>
           <div className='conName'>Constructor Name:</div>
           <div className='resName'>{constructorData.constName}</div>

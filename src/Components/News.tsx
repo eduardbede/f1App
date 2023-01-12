@@ -5,7 +5,7 @@ import LoadingImg from "./LoadingImg";
 import useDarkTheme from "./useDarkTheme";
 
 export default function News(){
-  const {darkTheme} = useDarkTheme()
+  const {darkTheme} = useDarkTheme();
   const [emptyView, setEmptyView] = useState<boolean>(true);
   const newsDivDark =  !darkTheme ? 'newsDivDark' : '';
   

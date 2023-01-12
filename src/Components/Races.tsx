@@ -7,7 +7,8 @@ import useDarkTheme from "./useDarkTheme";
 export default function Races() {
   const {darkTheme} = useDarkTheme();
   const {age} = useYears();
-  const darkColor = !darkTheme ? 'darkTheme textColor' : ''
+  const darkColor = !darkTheme ? 'darkTheme textColor' : '';
+
   return (
     <>
       <SelectYears  />
