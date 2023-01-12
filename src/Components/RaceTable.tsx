@@ -6,8 +6,6 @@ import useYears from './useYears';
 import useDarkTheme from './useDarkTheme';
 import useRaceTableFetch from './fetchHooks/useRaceTableFetch';
 
-
-
 export default function RaceTable() {
   const {darkTheme} = useDarkTheme();
   const { age } = useYears();
