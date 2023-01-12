@@ -4,11 +4,8 @@ import { Link } from "react-router-dom";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { DarkThemeContext } from "../App";
 
-interface Props{
-    setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
-}
 
-export default function ListMobile({setMenuOpen,/*  refMenu */}: Props) {
+export default function ListMobile() {
   const darkThemeSelect = useContext<any>(DarkThemeContext);
     const linkNames = [
         {name: "Races",id:"races",},

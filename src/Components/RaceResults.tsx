@@ -1,53 +1,20 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link }from 'react-router-dom'
+import { useParams, Link, Params }from 'react-router-dom'
 import DataTable, {createTheme} from 'react-data-table-component';
 import LoadingImg from './LoadingImg';
-import { RiTimerFill } from "react-icons/ri";
 import './RaceResult.css';
 import useYears from './useYears';
 import useDarkTheme from './useDarkTheme';
+import useRaceResultsFetch from './fetchHooks/useRaceResultsFetch';
 
-interface RaceType {
-  position:string;
-  driver:{firstName:string, lastName:string};
-  time:string;
-  constructor:string;
-  statusRace:string;
-  points:string;
-  fastestLap:string;
-  driverId:string;
-  constructorId:string;
-}
 
 export default function RaceResults() {
-  const params = useParams<string>();
+
+  const params = useParams<Readonly<Params<string>>>();
   const {darkTheme} = useDarkTheme()
   const {age} = useYears();
-  const [singleRaceData, setSingleRaceData] = useState<string[]>([]);
-  const [raceName, setRaceName] = useState<string>('');
-  useEffect(()=>{
-    fetch(`http://ergast.com/api/f1/${age}/${params.id}/results.json`)
-    .then((response:any) => response.json())
-    .then((result:any) => {
-          const resultMap = result.MRData.RaceTable?.Races[0]?.Results?.map((el:any)=>{
-            return{
-              position:el.position,
-              driver:{firstName:el.Driver.givenName, lastName:el.Driver.familyName},
-              time:el.Time?.time === undefined? "-" : el.Time?.time,
-              constructor:el.Constructor.name,
-              statusRace: el.status,
-              points:el.points,
-              fastestLap:el.FastestLap?.rank === "1" ? <RiTimerFill size={28} /> : '',
-              driverId:el.Driver.driverId,
-              constructorId: el.Constructor.constructorId
-            }
-          })
-          setRaceName(result.MRData.RaceTable?.Races[0].raceName);
-          setSingleRaceData(resultMap);
-    })
-    .catch((error:any) => console.log('error', error));
-  },[])
-  const data: RaceType[] = singleRaceData.map((el:any)=>{
+  const {raceName, singleRaceData} = useRaceResultsFetch(age, params);
+
+  const data = singleRaceData.map((el)=>{
     return {
         position:el.position,
         driver:el.driver,
@@ -59,7 +26,7 @@ export default function RaceResults() {
         driverId:el.driverId,
         constructorId:el.constructorId,
     }
-   })
+   });
 
   const columns = [
     {
@@ -132,7 +99,7 @@ const customStyles = {
 	},
 };
 
-createTheme('darkTheme', {
+const tabeleTheme = createTheme('darkTheme', {
   text: {
     primary: '#A2EAB6',
     secondary: '#2aa198',
@@ -154,6 +121,8 @@ createTheme('darkTheme', {
   },
 }, 'dark');
 
+const darkTable = !darkTheme ? 'darkTheme' : ''
+
   return (
     <>
     {singleRaceData.length === 0 ? <div className={`raceResultsLoadImg ${!darkTheme ? 'raceResultsLoadDark' : ''}`}><LoadingImg /></div>:
@@ -162,7 +131,7 @@ createTheme('darkTheme', {
       <DataTable columns={columns}
                  data={data}
                  customStyles={customStyles}
-                 theme={!darkTheme ? 'darkTheme' : ''}
+                 theme={darkTable}
       />
     </div>}
     </>

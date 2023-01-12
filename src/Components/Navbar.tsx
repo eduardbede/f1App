@@ -54,7 +54,7 @@ export const Navbar = () => {
                         animate={!menuOpen ? {x:'100%'} : {x:0}} 
                         transition={{duration: 0.5}} 
                         exit={{ x: 200 }}>
-                <ListMobile setMenuOpen={setMenuOpen} />
+                <ListMobile />
             </motion.div>}
         {width < 768 && <div ref={btnRefClose} className='hamburgerMenu'><GiHamburgerMenu onClick={()=>setMenuOpen(prevMenu=>!prevMenu)} className='hamburgerMenu'/></div> }
     </nav>

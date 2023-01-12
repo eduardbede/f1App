@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import SelectYears from "./SelectYears";
 import DataTable, {createTheme} from "react-data-table-component";
 import { Link } from "react-router-dom";
@@ -6,45 +5,22 @@ import './ConstructorStandings.css'
 import LoadingImg from "./LoadingImg";
 import useYears from "./useYears";
 import useDarkTheme from "./useDarkTheme";
+import useConstructorFetch from "./fetchHooks/useConstructorFetch";
 
-interface ConstStandings{
-    position:string;
-    points:string;
-    constructor:string;
-    constructorId:string;
-}
 
 export default function ConstructorStandings() {
     const {age} = useYears();
-    const {darkTheme} = useDarkTheme()
-    const[constructorStandings, setConstructorStandings] = useState<ConstStandings[]>([]);
+    const {darkTheme} = useDarkTheme();
+    const {constructorStandings} = useConstructorFetch(age)
 
-    useEffect(()=>{
-        fetch(`http://ergast.com/api/f1/${age}/constructorStandings.json`)
-        .then((response:any) => response.json())
-        .then((result:any) => {
-            const driverData = result.MRData.StandingsTable.StandingsLists[0]?.ConstructorStandings.map((el:any)=>{
-                return {
-                    position:el.position,
-                    points: el.points,
-                    constructor: el.Constructor.name,
-                    constructorId: el.Constructor.constructorId
-                }
-            })
-            setConstructorStandings(driverData);
-    })
-        .catch((error:any) => console.log('error', error));
-      },[age])
-
-
-      const data: ConstStandings[] = constructorStandings?.map((el:any)=>{
-        return {
-            position:el.position,
-            points:el.points,
-            constructor:el.constructor,
-            constructorId:el.constructorId,
-        }
-       })
+    const data = constructorStandings?.map((el)=>{
+      return {
+          position:el.position,
+          points:el.points,
+          constructor:el.constructor,
+          constructorId:el.constructorId,
+      }
+      });
 
        const columns = [
         {
@@ -87,7 +63,7 @@ export default function ConstructorStandings() {
       }
     };
 
-    createTheme('darkTheme', {
+   const tableThemeCreate =  createTheme('darkTheme', {
       text: {
         primary: '#A2EAB6',
         secondary: '#2aa198',
@@ -109,23 +85,27 @@ export default function ConstructorStandings() {
       },
     }, 'dark');
 
+    const darkColor = !darkTheme ? "darkConstructors" : '';
+    const darkConstructorsStandings = !darkTheme ? "darkConstructorsStandings" : '';
+    const tableTheme = !darkTheme ? 'darkTheme' : ''
+    
   return (
     <>
     <SelectYears />
     {constructorStandings !== undefined ?
       <>
-        <div className={`ageStandingDiv ${!darkTheme ? "darkConstructorsStandings" : ''}`}>
+        <div className={`ageStandingDiv ${darkConstructorsStandings}`}>
             <div>{age} Standings</div>
         </div>
          
-            <div className={`constructorStandingsDiv ${!darkTheme ? "darkConstructors" : ''}`}>
+            <div className={`constructorStandingsDiv ${darkColor}`}>
             <DataTable columns={columns}
                         data={data}
                         customStyles={customStyles}
-                        theme={!darkTheme ? 'darkTheme' : ''}
+                        theme={tableTheme}
             />
             </div> 
-        </> : <div className={`loadImgConstructors ${!darkTheme ? "darkConstructors" : ''}`}><LoadingImg /></div>}
+        </> : <div className={`loadImgConstructors ${darkColor}`}><LoadingImg /></div>}
         
         </>
     

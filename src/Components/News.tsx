@@ -7,9 +7,10 @@ import useDarkTheme from "./useDarkTheme";
 export default function News(){
   const {darkTheme} = useDarkTheme()
   const [emptyView, setEmptyView] = useState<boolean>(true);
-
+  const newsDivDark =  !darkTheme ? 'newsDivDark' : '';
+  
     return (
-      <div className={`newsDiv ${!darkTheme ? 'newsDivDark' : ''}`}>
+      <div className={`newsDiv ${newsDivDark}`}>
         {emptyView && <LoadingImg />}
         {<TwitterTimelineEmbed sourceType="profile" screenName="f1" options={{width:`90vw`}} theme={`${!darkTheme ? "dark" : 'light'}`}  onLoad={()=>setEmptyView(false)} /> }
       </div>

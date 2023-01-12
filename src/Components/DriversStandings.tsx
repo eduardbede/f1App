@@ -1,53 +1,18 @@
 import SelectYears from "./SelectYears";
-import {useEffect, useState} from 'react'
 import DataTable, {createTheme} from "react-data-table-component";
 import { Link } from "react-router-dom";
 import './DriverStandings.css';
 import LoadingImg from "./LoadingImg";
 import useYears from "./useYears";
 import useDarkTheme from "./useDarkTheme";
-
-interface DriverStandings{
-  position:string;
-  driverName:DriverName;
-  points:string;
-  constructor:string;
-  constructorId:string;
-  wins:string;
-  driverId:string;
-}
-
-interface DriverName{
-  firstName:string;
-  lastName:string
-}
+import useDriversStandingsFetch from "./fetchHooks/useDriversStandingsFetch";
 
 export default function Standings() {
-  const[driverStandings, setDriverStandings] = useState<DriverStandings[]>([]);
     const {age} = useYears();
     const {darkTheme} = useDarkTheme();
-    
-    useEffect(()=>{
-      fetch(`http://ergast.com/api/f1/${age}/driverStandings.json`)
-      .then((response:any) => response.json())
-      .then((result:any) => {
-        const driverData = result.MRData.StandingsTable.StandingsLists[0]?.DriverStandings.map((el:any)=>{
-          return {
-            position: el.position,
-            driverName:{firstName:el.Driver.givenName, lastName:el.Driver.familyName},
-            driverId:el.Driver.driverId,
-            points: el.points,
-            constructor: el.Constructors[0]?.name,
-            constructorId: el.Constructors[0]?.constructorId,
-            wins:el.wins
-          }
-        })
-        setDriverStandings(driverData)
-      })
-      .catch((error:any) => console.log('error', error));
-    },[age])
-
-    const data: DriverStandings[] = driverStandings?.map((el:any)=>{
+    const {driverStandings} = useDriversStandingsFetch(age);
+   
+    const data = driverStandings?.map((el)=>{
       return {
           position:el.position,
           driverName:el.driverName,
@@ -119,7 +84,7 @@ export default function Standings() {
     }
   };
 
-  createTheme('darkTheme', {
+ const themeTable = createTheme('darkTheme', {
     text: {
       primary: '#A2EAB6',
       secondary: '#2aa198',
@@ -131,34 +96,28 @@ export default function Standings() {
       background: '#cb4b16',
       text: '#FFFFFF',
     },
-    divider: {
-      default: '#073642',
-    },
-    action: {
-      button: 'rgba(0,0,0,.54)',
-      hover: 'rgba(0,0,0,.08)',
-      disabled: 'rgba(0,0,0,.12)',
-    },
   }, 'dark');
 
-
+const driverStandingsDivDark = !darkTheme ? 'driverStandingsDivDark': '';
+const driverStandingsLoadDark = !darkTheme ? 'driverStandingsLoadDark' : '';
+const driverStandingsDivDarkAge = !darkTheme ? 'driverStandingsDivDarkAge': '';
     return (
       <>
       <SelectYears />
       { driverStandings !== undefined ?
         <>
           
-          <div className={`ageStandingDiv ${!darkTheme ? 'driverStandingsDivDark': ''}`}>
-            <div className={`${!darkTheme ? 'driverStandingsDivDarkAge': ''}`}>{age} Standings</div>
+          <div className={`ageStandingDiv ${driverStandingsDivDark}`}>
+            <div className={`${driverStandingsDivDarkAge}`}>{age} Standings</div>
           </div>
-          <div className={`driverStandingsDiv ${!darkTheme ? 'driverStandingsDivDark' : ''}`}>
+          <div className={`driverStandingsDiv ${driverStandingsDivDark}`}>
             <DataTable columns={columns}
                       data={data}
                       customStyles={customStyles}
                       theme={!darkTheme ? 'darkTheme' : ''}
             />
           </div>
-        </>: <div className={`driverStandingsLoading ${!darkTheme ? 'driverStandingsLoadDark' : ''}`}><LoadingImg /></div>
+        </>: <div className={`driverStandingsLoading ${driverStandingsLoadDark}`}><LoadingImg /></div>
         }
       </>
     )

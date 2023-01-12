@@ -6,16 +6,16 @@ import './TableColumn.css'
 import useYears from './useYears'
 import useDarkTheme from './useDarkTheme'
 
-interface Props{
-    dataRace:string[]
+interface Props{ 
+    dataRace:string[];
 }
 
 interface RaceType {
-    countryFlag: any;
+    countryFlag: string;
     grandPrix: string;
     circuitName: string;
     raceDay: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
-    results: any
+    results: string
     raceHours:RaceHours
 }
 
@@ -32,7 +32,7 @@ interface DateTimeRace{
     time:string
 }
 
-export default function TableColumn({dataRace }: Props) {
+export default function TableColumn({dataRace}: Props) {
     const {darkTheme} = useDarkTheme()
     const {age} = useYears()
 
@@ -57,7 +57,7 @@ export default function TableColumn({dataRace }: Props) {
     }
 
 
-    function formatDay(day:string | undefined):string | undefined{
+    function formatDay(day:string | undefined){
         if(day === undefined) return
         let d = new Date(day)
         let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
@@ -88,7 +88,7 @@ export default function TableColumn({dataRace }: Props) {
         }
     }
 
-   const data: RaceType[] = dataRace.map((el:any)=>{
+   const data:any = dataRace.map((el:any)=>{
     return {
         countryFlag:<div className='flagDiv' >
                         <Flag code={getNameCountry(el.Circuit.Location.country)} 
@@ -198,7 +198,7 @@ export default function TableColumn({dataRace }: Props) {
         }
       };
 
-      createTheme('darkTheme', {
+    const tableDark =  createTheme('darkTheme', {
         text: {
           primary: '#A2EAB6',
           secondary: '#2aa198',

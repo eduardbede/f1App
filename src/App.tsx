@@ -40,10 +40,8 @@ function App() {
       sessionStorage.setItem("age", age);
     };
 
-   
-    
   function darkLightToggle(){
-    setDarkTheme((prevDark: any) => !prevDark );
+    setDarkTheme((prevDark: boolean) => !prevDark );
   };
 
   return (

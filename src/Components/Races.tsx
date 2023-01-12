@@ -7,11 +7,11 @@ import useDarkTheme from "./useDarkTheme";
 export default function Races() {
   const {darkTheme} = useDarkTheme();
   const {age} = useYears();
-  
+  const darkColor = !darkTheme ? 'darkTheme textColor' : ''
   return (
     <>
       <SelectYears  />
-        <div className={`raceScheduleDiv ${!darkTheme ? 'darkTheme textColor' : ''}`}>
+        <div className={`raceScheduleDiv ${darkColor}`}>
           <div>{age} Race Schedule</div>
         </div>
       <RaceTable />
